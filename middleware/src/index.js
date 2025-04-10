@@ -48,6 +48,11 @@ app.all('/sensorData', (req, res) => {
   });
 });
 
+//comprobacion salud haproxy
+app.get('/health', (req, res) => {
+  res.status(200).send("OK");
+});
+
 // Iniciar el servidor Express
 app.listen(port, () => {
   console.log(`Middleware escuchando en el puerto ${port}`);
