@@ -9,7 +9,6 @@ Este proyecto implementa una infraestructura de red orientada a servicios para l
 - Capa de servicios:
   - Almacenamiento (Node.js → InfluxDB)
   - Visualización (Grafana)
-  - Servicio personal (por implementar)
 
 Se basa en contenedores Docker orquestados con Docker Compose, y la configuración está versionada en GitHub.
 
