@@ -9,11 +9,11 @@ while true; do
   # temperatura 20 y 30 grados
   temperature=$(awk -v min=20 -v max=30 'BEGIN{srand(); printf "%.2f", min+rand()*(max-min)}')
   
-  curl -s "http://127.0.0.1/sensorData?sensorID=${sensorID}&temperature=${temperature}" -o /dev/null
-  
+  http_code=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1/sensorData?sensorID=${sensorID}&temperature=${temperature}")
+
   echo "Enviado sensorID=${sensorID} con temperatura=${temperature}"
   
   # intervalos de 2 segundos
-  sleep 2
+  sleep 1 
 done
 
