@@ -15,3 +15,10 @@ docker-compose up -d grafana
 - UI en `http://<host>:3000`, usuario `admin` (cambiar contraseña).
 - Data source: InfluxDB configurado en URL `http://influxdb:8086`, token `my-token`.
 
+### Query
+
+from(bucket: "sensordata")
+  |> range(start: -15m)
+  |> filter(fn: (r) => r._measurement == "temperature")
+  |> filter(fn: (r) => exists r.sensorID)
+  |> keep(columns: ["_time", "_value", "sensorID"])
